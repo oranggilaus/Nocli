@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 3.9%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 3.9%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 210 40% 3.9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 84.2%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg;
+  }
+
+  .glass-border {
+    @apply border border-white/10;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+  }
+
+  .nocli-gradient {
+    @apply bg-gradient-to-r from-nocli-purple to-nocli-pink;
+  }
+
+  .nocli-glow {
+    @apply shadow-purple-glow;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  @apply h-2;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  @apply w-2;
+}
+
+/* Selection */
+::selection {
+  @apply bg-nocli-purple/30 text-white;
+}
+
+/* Focus styles */
+:focus-visible {
+  @apply outline-none ring-2 ring-nocli-purple/50 ring-offset-2 ring-offset-background;
+}
+
+/* Markdown content styling */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  @apply text-foreground mt-4 mb-2;
+}
+
+.markdown-content h1 {
+  @apply text-2xl font-bold border-b border-white/20 pb-2;
+}
+
+.markdown-content h2 {
+  @apply text-xl font-semibold border-b border-white/10 pb-1;
+}
+
+.markdown-content h3 {
+  @apply text-lg font-medium;
+}
+
+.markdown-content p {
+  @apply text-muted-foreground my-2 leading-relaxed;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  @apply my-2 pl-6;
+}
+
+.markdown-content li {
+  @apply my-1;
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 border-nocli-purple/30 pl-4 py-2 my-2 italic text-muted-foreground;
+}
+
+.markdown-content code {
+  @apply bg-white/10 px-2 py-1 rounded text-sm;
+}
+
+.markdown-content pre {
+  @apply bg-black/20 p-4 rounded-lg overflow-x-auto my-4;
+}
+
+.markdown-content a {
+  @apply text-nocli-purple hover:text-nocli-pink underline;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
